@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Docente extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        "nombres",
+        "apellidos",
+        "celular",
+        "correo",
+        "especialidad",
+    ];
+
+    // Relaciones polimorficas
+    public function atenciones()
+    {
+        return $this->morphMany(Atencion::class, 'atencionable');
+    }
 }
