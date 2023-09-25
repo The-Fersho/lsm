@@ -13,22 +13,23 @@ class Atencion extends Model
 
     protected $fillable = [
         "libro_id",
+        "atencionable_type",
         "atencionable_id",
         "fecha",
         "hora",
         "fecha_devolucion",
         "asignatura",
         "motivo",
-        "tipo_atencion",
+        "tipo_atencion"
     ];
 
-    // Relaciones polimorficas
-    public function atenciones()
+    //Relaciones polimorficas
+    public function atencionable()
     {
         return $this->morphTo();
     }
 
-    // Relacion uno a muchos inversa
+    //Relacion uno a muchos inversa
     public function libro()
     {
         return $this->belongsTo(Libro::class);

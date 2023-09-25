@@ -21,8 +21,8 @@
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="shadow bg-gradient-to-b from-gray-100 to-gray-200 dark:bg-gray-800">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <header class="shadow bg-gradient-to-b from-gray-200 to-gray-300 dark:bg-gray-800">
+                    <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
                 </header>

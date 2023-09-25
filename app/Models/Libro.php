@@ -12,10 +12,10 @@ class Libro extends Model
     protected $fillable = [
         "titulo",
         "autor",
-        "categoria",
+        "categoria"
     ];
 
-    // RElacion uno a muchos
+    //Relacion uno a muchos
     public function atenciones()
     {
         return $this->hasMany(Atencion::class);

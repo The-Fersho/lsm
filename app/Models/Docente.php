@@ -14,10 +14,10 @@ class Docente extends Model
         "apellidos",
         "celular",
         "correo",
-        "especialidad",
+        "especialidad"
     ];
 
-    // Relaciones polimorficas
+    //Relaciones polimorficas
     public function atenciones()
     {
         return $this->morphMany(Atencion::class, 'atencionable');

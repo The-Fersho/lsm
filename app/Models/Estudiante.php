@@ -9,19 +9,17 @@ class Estudiante extends Model
 {
     use HasFactory;
 
-    use HasFactory;
-
     protected $fillable = [
         "nombres",
         "apellidos",
         "celular",
         "correo",
-        "carrera",
+        "carrera"
     ];
 
-    // Relaciones polimorficas
-    public function atenciones()
-    {
-        return $this->morphMany(Atencion::class, 'atencionable');
-    }
+     //Relaciones polimorficas
+     public function atenciones()
+     {
+         return $this->morphMany(Atencion::class, 'atencionable');
+     }
 }

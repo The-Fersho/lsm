@@ -9,6 +9,7 @@ export default {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './vendor/rappasoft/laravel-livewire-tables/resources/views/**/*.blade.php',
+        './app/Http/Livewire/**/*.php',
     ],
 
     theme: {
@@ -46,8 +47,8 @@ export default {
                     '900': '#2b464e',
                     '950': '#182c34',
                 },
-                
-                
+
+
             }
         },
     },

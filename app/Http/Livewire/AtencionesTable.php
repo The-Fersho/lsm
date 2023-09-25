@@ -19,13 +19,17 @@ class AtencionesTable extends DataTableComponent
     {
         return [
             Column::make("Id", "id")->sortable(),
-            Column::make("Libro id", "libro_id")->sortable(),
+            Column::make("Libro", "libro.titulo")->sortable(),
+
+            Column::make('Usuario')
+                ->label( fn($row) => view('atenciones.user')->withRow(Atencion::findOrFail($row->id))),
+
             Column::make("Fecha", "fecha")->sortable(),
             Column::make("Hora", "hora")->sortable(),
             Column::make("Fecha devolucion", "fecha_devolucion")->sortable(),
             Column::make("Asignatura", "asignatura")->sortable(),
             Column::make("Motivo", "motivo")->sortable(),
-            Column::make("Tipo atencion", "tipo_atencion")->sortable(),
+            Column::make("Tipo atencion", "tipo_atencion")->sortable()
         ];
     }
 }

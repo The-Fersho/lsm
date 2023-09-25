@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombres');
             $table->string('apellidos');
-            $table->string('corrreo');
+            $table->string('correo');
             $table->string('celular');
             $table->integer('especialidad'); //Aqui ira el id de la especialidad
             $table->timestamps();
