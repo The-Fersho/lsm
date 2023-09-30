@@ -27,7 +27,7 @@
                                 <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Bienvenido</h2>
 
                                 <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    Sistema de Administración de Atenciones de la Biblioteca de la Universidad Martin Lutero de Ocotal, Nueva Segovia, Nicaragua.
+                                    Sistema de Administración de Atenciones de la Biblioteca Melvin Hodges de la Universidad Martin Lutero Sede Ocotal, Nueva Segovia, Nicaragua.
                                 </p>
                             </div>
                         </a>

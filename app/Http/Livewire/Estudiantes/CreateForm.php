@@ -10,7 +10,7 @@ class CreateForm extends Component
 {
     use HasUtilsUML;
 
-    public $docente;
+    public $estudiante;
 
     public function mount()
     {
@@ -27,7 +27,7 @@ class CreateForm extends Component
         $this->validate();
         $this->estudiante->save();
 
-        session()->flash('message', '✅ Libro creado correctamente.');
+        session()->flash('message', '✅ Estudiante creado correctamente.');
 
         return redirect()->route('estudiantes');
     }

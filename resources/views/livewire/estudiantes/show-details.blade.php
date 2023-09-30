@@ -28,7 +28,7 @@
                 </div>
                 <div>
                     <span class='font-bold text-ugreen-700'>Carrera: </span>
-                    <span>{{ \App\Enums\CategoriasLibrosEnum::getName($estudiante->carrera) }}</span>
+                    <span>{{ \App\Enums\CarrerasEstudiantesEnum::getName($estudiante->carrera) }}</span>
                 </div>
             </div>
         </div>
