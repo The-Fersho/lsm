@@ -9,7 +9,7 @@ export default {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './vendor/rappasoft/laravel-livewire-tables/resources/views/**/*.blade.php',
-        './app/Http/Livewire/**/*.php',
+        './app/Http/Livewire/**/*.php'
     ],
 
     theme: {
@@ -18,7 +18,6 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
 
-            // Custom colors for the app
             colors : {
                 'ugreen': {
                     '50': '#f3faf3',
@@ -26,21 +25,20 @@ export default {
                     '200': '#c9e9ca',
                     '300': '#9ed7a2',
                     '400': '#6bbd70',
-                    '500': '#459c4b',   // Original
+                    '500': '#459c4b', //ORIGINAL
                     '600': '#36833b',
                     '700': '#2d6831',
                     '800': '#28532b',
                     '900': '#224526',
                     '950': '#0e2511',
                 },
-
                 'ublue': {
                     '50': '#f1f9fa',
                     '100': '#dceff1',
                     '200': '#bde1e4',
                     '300': '#8ecbd2',
                     '400': '#65b2bc',
-                    '500': '#3e919c',   // Original
+                    '500': '#3e919c', //ORIGINAl
                     '600': '#367684',
                     '700': '#31616d',
                     '800': '#2f515b',
