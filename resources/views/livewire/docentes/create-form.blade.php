@@ -44,15 +44,27 @@
 
         <!-- Create a select element with a Enums CategoriasLibrosEnum -->
         <div>
-            <x-input-label for="especialidad" :value="__('Carrera')" />
+            <x-input-label for="especialidad" :value="__('Carrera / profesion')" />
             <select wire:model.defer="docente.especialidad" id="especialidad" name="especialidad" class="block w-full mt-1"
                 :value="old('especialidad', $docente->especialidad)" required>
-                <option value="">Seleccione una especialidad</option>
-                @foreach (EspecialidadesDocenteEnum::cases() as $key => $cat)
+                <option value="">Seleccione una carrera / profesión</option>
+                @foreach (\App\Enums\CarrerasEstudiantesEnum::cases() as $key => $cat)
                     <option value="{{ $cat->value }}">{{ $cat->name }}</option>
                 @endforeach
             </select>
             <x-input-error class="mt-2" :messages="$errors->get('especialidad')" />
+        </div>
+
+        <div>
+            <x-input-label for="grado" :value="__('Grado académico')" />
+            <select wire:model.defer="docente.grado" id="grado" name="grado" class="block w-full mt-1"
+                    :value="old('grado', $docente->grado)" required>
+                <option value="">Seleccione el grado académico</option>
+                @foreach (EspecialidadesDocenteEnum::cases() as $key => $cat)
+                    <option value="{{ $cat->value }}">{{ $cat->name }}</option>
+                @endforeach
+            </select>
+            <x-input-error class="mt-2" :messages="$errors->get('grado')" />
         </div>
 
         <div class="flex items-center gap-4">

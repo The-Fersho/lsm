@@ -43,6 +43,7 @@ class CreateForm extends Component
             'atencion.asignatura' => 'required',
             'atencion.motivo' => 'required',
             'atencion.tipo_atencion' => 'required',
+            'atencion.nivel' => 'required',
             'atencion.atencionable_id' => 'required',
             'tipo_atencion' => 'required',
         ];

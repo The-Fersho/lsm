@@ -12,6 +12,7 @@ class Docente extends Model
     protected $fillable = [
         "nombres",
         "apellidos",
+        "grado",
         "celular",
         "correo",
         "especialidad"

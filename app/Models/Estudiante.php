@@ -12,6 +12,7 @@ class Estudiante extends Model
     protected $fillable = [
         "nombres",
         "apellidos",
+        "carnet",
         "celular",
         "correo",
         "carrera"

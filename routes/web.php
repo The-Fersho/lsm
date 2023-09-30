@@ -24,7 +24,6 @@ Route::get('/dashboard', function () {
 
 Route::group(['middleware' => ['auth','verified']], function () {
 
-    
     //Libros
     Route::get('/libros', function () {
         return view('libros');
@@ -41,7 +40,6 @@ Route::group(['middleware' => ['auth','verified']], function () {
     Route::get('/libros/delete/{id}', function () {
         return view('libros.delete');
     })->name('libros.delete');
-
 
     //Estudiantes
     Route::get('/estudiantes', function () {
@@ -79,7 +77,6 @@ Route::group(['middleware' => ['auth','verified']], function () {
         return view('docentes.delete');
     })->name('docentes.delete');
 
-
     //Atenciones
     Route::get('/atenciones', function () {
         return view('atenciones');
@@ -88,6 +85,7 @@ Route::group(['middleware' => ['auth','verified']], function () {
     Route::get('/atenciones/create', function () {
         return view('atenciones.create');
     })->name('atenciones.create');
+
 
     Route::get('/atenciones/edit/{id}', function () {
         return view('atenciones.edit');

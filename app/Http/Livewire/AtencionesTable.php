@@ -22,10 +22,11 @@ class AtencionesTable extends DataTableComponent
             Column::make("Libro", "libro.titulo")->sortable(),
 
             Column::make('Usuario')
-                ->label( fn($row) => view('atenciones.user')->withRow(Atencion::findOrFail($row->id))),
+                ->searchable()
+                ->label(fn ($row) => view('atenciones.user')->withRow(Atencion::findOrFail($row->id))),
 
             Column::make("Fecha", "fecha")->sortable(),
-            Column::make("Hora", "hora")->sortable(),
+            Column::make("Hora", "hora")->searchable(),
             Column::make("Fecha devolucion", "fecha_devolucion")->sortable(),
             Column::make("Asignatura", "asignatura")->sortable(),
             Column::make("Motivo", "motivo")->sortable(),

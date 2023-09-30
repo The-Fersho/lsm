@@ -12,27 +12,27 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard*')">
                         {{ __('Inicio') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('libros')" :active="request()->routeIs('libros')">
+                    <x-nav-link :href="route('libros')" :active="request()->routeIs('libros*')">
                         {{ __('Libros') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('estudiantes')" :active="request()->routeIs('estudiantes')">
+                    <x-nav-link :href="route('estudiantes')" :active="request()->routeIs('estudiantes*')">
                         {{ __('Estudiantes') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('docentes')" :active="request()->routeIs('docentes')">
+                    <x-nav-link :href="route('docentes')" :active="request()->routeIs('docentes*')">
                         {{ __('Docentes') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('atenciones')" :active="request()->routeIs('atenciones')">
+                    <x-nav-link :href="route('atenciones')" :active="request()->routeIs('atenciones*')">
                         {{ __('Atenciones') }}
                     </x-nav-link>
                 </div>

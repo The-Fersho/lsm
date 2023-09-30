@@ -44,6 +44,7 @@ class EditForm extends Component
             'estudiante.correo' => 'required',
             'estudiante.celular' => 'required',
             'estudiante.carrera' => 'required',
+            'estudiante.carnet' => 'required',
         ];
     }
 

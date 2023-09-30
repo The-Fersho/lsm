@@ -20,7 +20,8 @@ class Atencion extends Model
         "fecha_devolucion",
         "asignatura",
         "motivo",
-        "tipo_atencion"
+        "tipo_atencion",
+        "nivel"
     ];
 
     //Relaciones polimorficas

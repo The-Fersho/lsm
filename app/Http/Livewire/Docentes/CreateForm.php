@@ -40,6 +40,7 @@ class CreateForm extends Component
             'docente.correo' => 'required',
             'docente.celular' => 'required',
             'docente.especialidad' => 'required',
+            'docente.grado' => 'required',
         ];
     }
 

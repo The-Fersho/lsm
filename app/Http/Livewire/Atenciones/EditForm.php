@@ -2,35 +2,35 @@
 
 namespace App\Http\Livewire\Atenciones;
 
+use App\Models\Atencion;
 use Livewire\Component;
-use App\Models\Libro;
 
 class EditForm extends Component
 {
 
-    public $libro;
+    public $atencion;
 
     public function mount()
     {
         //Get the id from route
         $id = request()->route()->parameter('id');
 
-        $this->libro = Libro::find($id);
+        $this->atencion = Atencion::find($id);
     }
 
 
     public function render()
     {
-        return view('livewire.libros.edit-form');
+        return view('livewire.atenciones.edit-form');
     }
 
     public function guardar_libro()
     {
         $this->validate();
-        $this->libro->save();
-        session()->flash('message', '✅ Libro actualizado correctamente.');
+        $this->atencion->save();
+        session()->flash('message', '✅ Atención actualizada correctamente.');
 
-        return redirect()->route('libros');
+        return redirect()->route('atenciones');
     }
 
     /**
@@ -39,9 +39,16 @@ class EditForm extends Component
     public function rules(): array
     {
         return [
-            'libro.titulo' => 'required',
-            'libro.autor' => 'required',
-            'libro.categoria' => 'required',
+            'atencion.libro_id' => 'required',
+            'atencion.fecha' => 'required',
+            'atencion.hora' => 'required',
+            'atencion.fecha_devolucion' => 'required',
+            'atencion.asignatura' => 'required',
+            'atencion.motivo' => 'required',
+            'atencion.tipo_atencion' => 'required',
+            'atencion.nivel' => 'required',
+            'atencion.atencionable_id' => 'required',
+            'tipo_atencion' => 'required',
         ];
     }
 }
