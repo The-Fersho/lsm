@@ -2,11 +2,14 @@
 
 namespace App\Http\Livewire\Libros;
 
-use Livewire\Component;
 use App\Models\Libro;
+use App\Traits\HasUtilsUML;
+use Livewire\Component;
 
 class CreateForm extends Component
 {
+    use HasUtilsUML;
+
     public $libro;
 
     public function mount()

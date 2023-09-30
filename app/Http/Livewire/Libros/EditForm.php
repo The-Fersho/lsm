@@ -2,11 +2,13 @@
 
 namespace App\Http\Livewire\Libros;
 
-use Livewire\Component;
 use App\Models\Libro;
+use App\Traits\HasUtilsUML;
+use Livewire\Component;
 
 class EditForm extends Component
 {
+    use HasUtilsUML;
 
     public $libro;
 
@@ -17,7 +19,6 @@ class EditForm extends Component
 
         $this->libro = Libro::find($id);
     }
-
 
     public function render()
     {

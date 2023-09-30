@@ -24,8 +24,9 @@ class DeleteForm extends Component
 
     public function eliminar_atencion()
     {
-            $this->atencion->delete();
-            session()->flash('message', '✅ Atención eliminada correctamente.');
+        $this->atencion->delete();
+        session()->flash('message', '✅ Atención eliminada correctamente.');
+
         return redirect()->route('atenciones');
     }
 

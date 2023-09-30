@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('apellidos');
             $table->string('correo');
             $table->string('celular');
-            $table->integer('especialidad');//Se guardará el id de la especialidad
+            $table->integer('especialidad'); //Se guardará el id de la especialidad
             $table->timestamps();
         });
     }

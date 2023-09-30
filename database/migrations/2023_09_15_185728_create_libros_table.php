@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('titulo');
             $table->string('autor');
-            $table->integer('categoria');//Se guardará el id de la categoria
+            $table->integer('categoria'); //Se guardará el id de la categoria
             $table->timestamps();
         });
     }

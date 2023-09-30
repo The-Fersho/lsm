@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire\Libros;
 
-use Livewire\Component;
 use App\Models\Libro;
+use Livewire\Component;
 
 class DeleteForm extends Component
 {
@@ -24,10 +24,9 @@ class DeleteForm extends Component
 
     public function eliminar_libro()
     {
-
         if ($this->libro->atenciones->count() > 0) {
             session()->flash('message', '❌ No se puede eliminar el libro porque tiene atenciones asociadas.');
-        }else{
+        } else {
             $this->libro->delete();
             session()->flash('message', '✅ Libro eliminado correctamente.');
         }

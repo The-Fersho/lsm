@@ -2,35 +2,48 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Docente;
+use App\Traits\HasUtilsUML;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
-use App\Models\Docente;
 use Rappasoft\LaravelLivewireTables\Views\Columns\ButtonGroupColumn;
 use Rappasoft\LaravelLivewireTables\Views\Columns\LinkColumn;
 
 class DocentesTable extends DataTableComponent
 {
+    use HasUtilsUML;
+
     protected $model = Docente::class;
 
     public function configure(): void
     {
-        $this->setPrimaryKey('id');
+        $this->setPrimaryKey('id')
+            ->setTableRowUrl(function ($row) {
+                return route('docentes.show', $row);
+            })
+            ->setTableRowUrlTarget(function ($row) {
+                return '_self';
+            });
     }
 
     public function columns(): array
     {
         return [
-            Column::make("Id", "id")->sortable(),
-            Column::make("Nombres", "nombres")->sortable(),
-            Column::make("Apellidos", "apellidos")->sortable(),
-            Column::make("Celular", "celular")->sortable(),
-            Column::make("Correo", "correo")->sortable(),
-            Column::make("Especialidad", "especialidad")
-            ->format(function ($value) {
-                return \App\Enums\EspecialidadesDocenteEnum::getName($value);
-            })
-            ->sortable(),
+            Column::make('Id', 'id')->sortable(),
+            Column::make('Nombres', 'nombres')->searchable(),
+            Column::make('Apellidos', 'apellidos')->searchable(),
+            /*Column::make('Celular', 'celular')->sortable(),
+            Column::make('Correo', 'correo')->sortable(),
+            Column::make('Grado', 'grado')
+                ->format(function ($value) {
+                    return \App\Enums\GradosAcademicosDocentesEnum::getName($value);
+                }),*/
+            Column::make('Especialidad', 'especialidad')
+                ->format(function ($value) {
+                    return \App\Enums\CarrerasEnum::getName($value);
+                }),
             ButtonGroupColumn::make('Tareas')
+                ->unclickable()
                 ->attributes(function ($row) {
                     return [
                         'class' => 'space-x-2',
@@ -38,20 +51,16 @@ class DocentesTable extends DataTableComponent
                 })
                 ->buttons([
                     LinkColumn::make('Editar')
-                        ->title(fn ($row) => 'Editar')
+                        ->title(fn ($row) => svg('typ-edit', 'inline-block h-5 w-5'))
                         ->location(fn ($row) => route('docentes.edit', $row))
                         ->attributes(function ($row) {
-                            return [
-                                'class' => 'rounded-md px-1 py-3 bg-amber-400 text-white hover:bg-amber-500 active:bg-amber-600',
-                            ];
+                            return self::editBtn();
                         }),
                     LinkColumn::make('Eliminar')
-                        ->title(fn ($row) => 'Eliminar')
+                        ->title(fn ($row) => svg('typ-trash', 'inline-block h-5 w-5'))
                         ->location(fn ($row) => route('docentes.delete', $row))
                         ->attributes(function ($row) {
-                            return [
-                                'class' => 'rounded-md px-1 py-3 bg-rose-400 text-white hover:bg-rose-500 active:bg-rose-600',
-                            ];
+                            return self::deleteBtn();
                         }),
                 ]),
         ];

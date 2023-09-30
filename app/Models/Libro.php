@@ -10,9 +10,9 @@ class Libro extends Model
     use HasFactory;
 
     protected $fillable = [
-        "titulo",
-        "autor",
-        "categoria"
+        'titulo',
+        'autor',
+        'categoria',
     ];
 
     //Relacion uno a muchos

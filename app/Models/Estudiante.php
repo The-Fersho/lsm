@@ -10,17 +10,23 @@ class Estudiante extends Model
     use HasFactory;
 
     protected $fillable = [
-        "nombres",
-        "apellidos",
-        "carnet",
-        "celular",
-        "correo",
-        "carrera"
+        'nombres',
+        'apellidos',
+        'carnet',
+        'celular',
+        'correo',
+        'carrera',
     ];
 
-     //Relaciones polimorficas
-     public function atenciones()
-     {
-         return $this->morphMany(Atencion::class, 'atencionable');
-     }
+    //Relaciones polimorficas
+    public function atenciones()
+    {
+        return $this->morphMany(Atencion::class, 'atencionable');
+    }
+
+    //Define a full_name attribute
+    public function getFullnameAttribute()
+    {
+        return "{$this->nombres} {$this->apellidos}";
+    }
 }

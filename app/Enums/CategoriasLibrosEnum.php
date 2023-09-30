@@ -2,6 +2,8 @@
 
 namespace App\Enums;
 
+use Illuminate\Support\Str;
+
 enum CategoriasLibrosEnum: int
 {
     case EDUCACION = 1;
@@ -13,12 +15,14 @@ enum CategoriasLibrosEnum: int
     case SERVICIOS = 7;
     case OTROS = 8;
 
-    public static function getName(int $value): string {
+    public static function getName(int $value): string
+    {
         foreach (self::cases() as $case) {
             if ($case->value === $value) {
-                return $case->name;
+                return ucfirst(Str::lower(Str::replace('_', ' ', $case->name)));
             }
         }
-        throw new \InvalidArgumentException("Value not found in the Enum");
+
+        throw new \InvalidArgumentException('Categoría no encontrado en la lista enumerada');
     }
 }

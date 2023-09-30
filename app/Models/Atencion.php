@@ -9,19 +9,18 @@ class Atencion extends Model
 {
     use HasFactory;
 
-    protected $table = "atenciones";
-
+    protected $table = 'atenciones';
     protected $fillable = [
-        "libro_id",
-        "atencionable_type",
-        "atencionable_id",
-        "fecha",
-        "hora",
-        "fecha_devolucion",
-        "asignatura",
-        "motivo",
-        "tipo_atencion",
-        "nivel"
+        'libro_id',
+        'atencionable_type',
+        'atencionable_id',
+        'fecha',
+        'hora',
+        'fecha_devolucion',
+        'asignatura',
+        'motivo',
+        'tipo_atencion',
+        'nivel',
     ];
 
     //Relaciones polimorficas

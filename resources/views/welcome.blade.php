@@ -14,7 +14,7 @@
         @vite(['resources/css/app.css','resources/js/app.js'])
     </head>
     <body class="antialiased">
-        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 pattern dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
             <div class="max-w-7xl mx-auto p-6 lg:p-8">
                 <div class="flex justify-center">
                     <img src="{{asset('images/logo-uml.png')}}" alt="Logo" class="h-16 w-auto bg-gray-100 dark:bg-gray-900">
@@ -27,13 +27,13 @@
                                 <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Bienvenido</h2>
 
                                 <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    Sistema de Administración de Atenciones de la Biblioteca Melvin Hodges de la Universidad Martin Lutero de Ocotal, Nueva Segovia, Nicaragua.
+                                    Sistema de Administración de Atenciones de la Biblioteca de la Universidad Martin Lutero de Ocotal, Nueva Segovia, Nicaragua.
                                 </p>
                             </div>
                         </a>
-                        <a href="{{route('login')}}" class="flex items-center justify-between scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-ugreen-500">
+                        <a href="{{route('login')}}" class="flex items-center justify-center scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-ugreen-500">
                             <div>
-                                <h2 class="mt-6 text-xl font-semibold text-ugreen-700 dark:text-white">Ingreso al sistema</h2>
+                                <h2 class="text-xl font-semibold text-ugreen-700 dark:text-white">Ingreso al sistema</h2>
                             </div>
 
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="self-center shrink-0 stroke-ugreen-500 w-6 h-6 mx-6">

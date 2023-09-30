@@ -2,43 +2,36 @@
     use App\Enums\CategoriasLibrosEnum;
 @endphp
 <section>
-    <header>
-        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            Detalles del libro
-        </h2>
+    <x-section-header :title="'Detalles del libro'" :description="'Ingresa la información requerida para actualizar el libro'" />
 
-        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            Ingresa la información requerida para actualizar el libro
-        </p>
-    </header>
-
-    <form wire:submit.prevent='guardar_libro' class="mt-6 space-y-6">
+    <form wire:submit.prevent='guardar_libro' class="mt-6">
         <div>
             <x-input-label for="titulo" :value="__('Titulo')" />
-            <x-text-input wire:model="libro.titulo" id="titulo" name="titulo" type="text" class="block w-full mt-1" :value="old('titulo', $libro->titulo)" required autofocus autocomplete="titulo" />
-            <x-input-error class="mt-2" :messages="$errors->get('titulo')" />
+            <x-text-input wire:model.defer="libro.titulo" id="titulo" name="titulo" type="text"
+                class="mt-1 block w-full" required autofocus />
+            <x-input-error class="mt-2" :messages="$errors->get('libro.titulo')" />
         </div>
 
         <div>
             <x-input-label for="autor" :value="__('Autor')" />
-            <x-text-input wire:model="libro.autor" id="autor" name="autor" type="text" class="block w-full mt-1" :value="old('autor', $libro->autor)" required autocomplete="autor" />
-            <x-input-error class="mt-2" :messages="$errors->get('autor')" />
+            <x-text-input wire:model.defer="libro.autor" id="autor" name="autor" type="text"
+                class="mt-1 block w-full" required />
+            <x-input-error class="mt-2" :messages="$errors->get('libro.autor')" />
         </div>
 
-        <!-- Create a select element with a Enums CategoriasLibrosEnum -->
         <div>
             <x-input-label for="categoria" :value="__('Categoria')" />
-            <select wire:model.defer="libro.categoria" id="categoria" name="categoria" class="block w-full mt-1"
-                    :value="old('categoria', $libro->categoria)" required autocomplete="categoria">
+            <select wire:model.defer="libro.categoria" id="categoria" name="categoria" class="mt-1 block w-full"
+                required>
                 <option value="">Seleccione una categoria</option>
                 @foreach (CategoriasLibrosEnum::cases() as $key => $cat)
-                    <option value="{{ $cat->value }}">{{ $cat->name }}</option>
+                    <option value="{{ $cat->value }}">{{ self::transform($cat->name) }}</option>
                 @endforeach
             </select>
-            <x-input-error class="mt-2" :messages="$errors->get('categoria')" />
+            <x-input-error class="mt-2" :messages="$errors->get('libro.categoria')" />
         </div>
 
-        <div class="flex items-center gap-4">
+        <div class="form-footer">
             <x-primary-button>Guardar</x-primary-button>
             <x-secondary-button wire:click="cancelar">Cancelar</x-secondary-button>
         </div>

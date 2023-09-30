@@ -2,35 +2,45 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Libro;
+use App\Traits\HasUtilsUML;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
-use Rappasoft\LaravelLivewireTables\Views\Columns\LinkColumn;
 use Rappasoft\LaravelLivewireTables\Views\Columns\ButtonGroupColumn;
-use App\Models\Libro;
+use Rappasoft\LaravelLivewireTables\Views\Columns\LinkColumn;
 
 class LibrosTable extends DataTableComponent
 {
+    use HasUtilsUML;
+
     protected $model = Libro::class;
 
     public function configure(): void
     {
-        $this->setPrimaryKey('id');
+        $this->setPrimaryKey('id')
+            ->setTableRowUrl(function ($row) {
+                return route('libros.show', $row);
+            })
+            ->setTableRowUrlTarget(function ($row) {
+                return '_self';
+            });
     }
 
     public function columns(): array
     {
         return [
-            Column::make("Id", "id")->sortable(),
-            Column::make("Titulo", "titulo")->sortable(),
-            Column::make("Autor", "autor")->sortable(),
+            Column::make('Id', 'id')->sortable(),
+            Column::make('Titulo', 'titulo')->sortable(),
+            Column::make('Autor', 'autor')->sortable(),
 
-            Column::make("Categoria", "categoria")
-            ->format(function ($value) {
-                return \App\Enums\CategoriasLibrosEnum::getName($value);
-            })
-            ->sortable(),
+            Column::make('Categoria', 'categoria')
+                ->format(function ($value) {
+                    return \App\Enums\CategoriasLibrosEnum::getName($value);
+                })
+                ->sortable(),
 
             ButtonGroupColumn::make('Tareas')
+                ->unclickable()
                 ->attributes(function ($row) {
                     return [
                         'class' => 'space-x-2',
@@ -38,20 +48,16 @@ class LibrosTable extends DataTableComponent
                 })
                 ->buttons([
                     LinkColumn::make('Editar')
-                        ->title(fn ($row) => 'Editar')
+                        ->title(fn ($row) => svg('typ-edit', 'inline-block h-5 w-5'))
                         ->location(fn ($row) => route('libros.edit', $row))
                         ->attributes(function ($row) {
-                            return [
-                                'class' => 'rounded-md px-1 py-3 bg-amber-400 text-white hover:bg-amber-500 active:bg-amber-600',
-                            ];
+                            return self::editBtn();
                         }),
                     LinkColumn::make('Eliminar')
-                        ->title(fn ($row) => 'Eliminar')
+                        ->title(fn ($row) => svg('typ-trash', 'inline-block h-5 w-5'))
                         ->location(fn ($row) => route('libros.delete', $row))
                         ->attributes(function ($row) {
-                            return [
-                                'class' => 'rounded-md px-1 py-3 bg-rose-400 text-white hover:bg-rose-500 active:bg-rose-600',
-                            ];
+                            return self::deleteBtn();
                         }),
                 ]),
         ];

@@ -9,7 +9,8 @@ export default {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './vendor/rappasoft/laravel-livewire-tables/resources/views/**/*.blade.php',
-        './app/Http/Livewire/**/*.php'
+        './app/Http/Livewire/**/*.php',
+        './app/Traits/**/*.php'
     ],
 
     theme: {

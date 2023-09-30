@@ -5,7 +5,7 @@ export default defineConfig({
     server: {
         cors: true,
         hmr: {
-            host: 'library.c.ni',
+            host: 'localhost',
             port: 5109,
         },
     },

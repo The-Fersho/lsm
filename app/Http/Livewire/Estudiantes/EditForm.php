@@ -2,13 +2,15 @@
 
 namespace App\Http\Livewire\Estudiantes;
 
-use Livewire\Component;
 use App\Models\Estudiante;
+use App\Traits\HasUtilsUML;
+use Livewire\Component;
 
 class EditForm extends Component
 {
+    use HasUtilsUML;
 
-    public $estudiante;
+    public $docente;
 
     public function mount()
     {
@@ -17,7 +19,6 @@ class EditForm extends Component
 
         $this->estudiante = Estudiante::find($id);
     }
-
 
     public function render()
     {
@@ -41,7 +42,7 @@ class EditForm extends Component
         return [
             'estudiante.nombres' => 'required',
             'estudiante.apellidos' => 'required',
-            'estudiante.correo' => 'required',
+            'estudiante.correo' => 'required|ends_with:uml.edu.ni',
             'estudiante.celular' => 'required',
             'estudiante.carrera' => 'required',
             'estudiante.carnet' => 'required',

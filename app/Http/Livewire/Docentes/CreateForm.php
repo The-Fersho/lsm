@@ -3,10 +3,13 @@
 namespace App\Http\Livewire\Docentes;
 
 use App\Models\Docente;
+use App\Traits\HasUtilsUML;
 use Livewire\Component;
 
 class CreateForm extends Component
 {
+    use HasUtilsUML;
+
     public $docente;
 
     public function mount()
@@ -37,7 +40,7 @@ class CreateForm extends Component
         return [
             'docente.nombres' => 'required',
             'docente.apellidos' => 'required',
-            'docente.correo' => 'required',
+            'docente.correo' => 'required|ends_with:uml.edu.ni',
             'docente.celular' => 'required',
             'docente.especialidad' => 'required',
             'docente.grado' => 'required',

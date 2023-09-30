@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('apellidos');
             $table->string('correo');
             $table->string('celular');
-            $table->integer('carrera');//Se guardará el id de la carrera
+            $table->integer('carrera'); //Se guardará el id de la carrera
             $table->timestamps();
         });
     }

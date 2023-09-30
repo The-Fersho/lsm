@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire\Docentes;
 
-use Livewire\Component;
 use App\Models\Docente;
+use Livewire\Component;
 
 class DeleteForm extends Component
 {
@@ -24,10 +24,9 @@ class DeleteForm extends Component
 
     public function eliminar_docente()
     {
-
         if ($this->docente->atenciones->count() > 0) {
             session()->flash('message', '❌ No se puede eliminar el docente porque tiene atenciones asociadas.');
-        }else{
+        } else {
             $this->docente->delete();
             session()->flash('message', '✅ Docente eliminado correctamente.');
         }

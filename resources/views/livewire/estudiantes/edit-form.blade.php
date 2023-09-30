@@ -1,5 +1,5 @@
 @php
-    use App\Enums\CarrerasEstudiantesEnum;
+    use App\Enums\CarrerasEnum;
 @endphp
 <section>
     <header>
@@ -12,50 +12,56 @@
         </p>
     </header>
 
-    <form wire:submit.prevent='guardar_estudiante' class="mt-6 space-y-6">
+    <form wire:submit.prevent='guardar_estudiante' class="mt-6">
         <div>
-            <x-input-label for="nombres" :value="__('Nombres')" />
-            <x-text-input wire:model="estudiante.nombres" id="nombres" name="nombres" type="text" class="block w-full mt-1"
-                          :value="old('nombres', $estudiante->nombres)" required autofocus autocomplete="nombres" />
-            <x-input-error class="mt-2" :messages="$errors->get('nombres')" />
+            <x-input-label for="nombres" :value="__('Nombres')"/>
+            <x-text-input wire:model.defer="estudiante.nombres" id="nombres" name="nombres" type="text"
+                          class="block w-full mt-1"
+                          required autofocus/>
+            <x-input-error class="mt-2" :messages="$errors->get('estudiante.nombres')"/>
         </div>
 
         <div>
-            <x-input-label for="apellidos" :value="__('Apellidos')" />
-            <x-text-input wire:model="estudiante.apellidos" id="apellidos" name="apellidos" type="text"
-                          class="block w-full mt-1" :value="old('apellidos', $estudiante->apellidos)" required autocomplete="apellidos" />
-            <x-input-error class="mt-2" :messages="$errors->get('apellidos')" />
+            <x-input-label for="apellidos" :value="__('Apellidos')"/>
+            <x-text-input wire:model.defer="estudiante.apellidos" id="apellidos" name="apellidos" type="text"
+                          class="block w-full mt-1" required/>
+            <x-input-error class="mt-2" :messages="$errors->get('estudiante.apellidos')"/>
         </div>
 
         <div>
-            <x-input-label for="celular" :value="__('Celular')" />
-            <x-text-input wire:model="estudiante.celular" id="celular" name="celular" type="text"
-                          class="block w-full mt-1" :value="old('celular', $estudiante->celular)" required autocomplete="celular" />
-            <x-input-error class="mt-2" :messages="$errors->get('celular')" />
+            <x-input-label for="celular" :value="__('Celular')"/>
+            <x-text-input wire:model.defer="estudiante.celular" id="celular" name="celular" type="text"
+                          class="block w-full mt-1" required/>
+            <x-input-error class="mt-2" :messages="$errors->get('estudiante.celular')"/>
         </div>
 
         <div>
-            <x-input-label for="correo" :value="__('Correo')" />
-            <x-text-input wire:model="estudiante.correo" id="correo" name="correo" type="email"
-                          class="block w-full mt-1" :value="old('correo', $estudiante->email)" required autocomplete="correo" />
-            <x-input-error class="mt-2" :messages="$errors->get('correo')" />
+            <x-input-label for="correo" :value="__('Correo')"/>
+            <x-text-input wire:model.defer="estudiante.correo" id="correo" name="correo" type="email"
+                          class="block w-full mt-1" required/>
+            <x-input-error class="mt-2" :messages="$errors->get('estudiante.correo')"/>
         </div>
 
-
-        <!-- Create a select element with a Enums CategoriasLibrosEnum -->
         <div>
-            <x-input-label for="carrera" :value="__('Carrera')" />
+            <x-input-label for="carnet" :value="__('Carnet')"/>
+            <x-text-input wire:model="estudiante.carnet" id="carnet" name="carnet" type="number"
+                          class="block w-full mt-1" required/>
+            <x-input-error class="mt-2" :messages="$errors->get('estudiante.carnet')"/>
+        </div>
+
+        <div>
+            <x-input-label for="carrera" :value="__('Carrera')"/>
             <select wire:model.defer="estudiante.carrera" id="carrera" name="carrera" class="block w-full mt-1"
-                    :value="old('carrera', $estudiante->carrera)" required>
+                    required>
                 <option value="">Seleccione una carrera</option>
-                @foreach (CarrerasEstudiantesEnum::cases() as $key => $cat)
-                    <option value="{{ $cat->value }}">{{ $cat->name }}</option>
+                @foreach (CarrerasEnum::cases() as $key => $cat)
+                    <option value="{{ $cat->value }}">{{ self::transform( $cat->name) }}</option>
                 @endforeach
             </select>
-            <x-input-error class="mt-2" :messages="$errors->get('carrera')" />
+            <x-input-error class="mt-2" :messages="$errors->get('estudiante.carrera')"/>
         </div>
 
-        <div class="flex items-center gap-4">
+        <div class="form-footer">
             <x-primary-button>Guardar</x-primary-button>
             <x-secondary-button wire:click="cancelar">Cancelar</x-secondary-button>
         </div>

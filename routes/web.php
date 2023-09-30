@@ -22,12 +22,15 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::group(['middleware' => ['auth','verified']], function () {
-
+Route::group(['middleware' => ['auth', 'verified']], function () {
     //Libros
     Route::get('/libros', function () {
         return view('libros');
     })->name('libros');
+
+    Route::get('/libros/details/{id}', function () {
+        return view('libros.show');
+    })->name('libros.show');
 
     Route::get('/libros/create', function () {
         return view('libros.create');
@@ -46,6 +49,10 @@ Route::group(['middleware' => ['auth','verified']], function () {
         return view('estudiantes');
     })->name('estudiantes');
 
+    Route::get('/estudiantes/details/{id}', function () {
+        return view('estudiantes.show');
+    })->name('estudiantes.show');
+
     Route::get('/estudiantes/create', function () {
         return view('estudiantes.create');
     })->name('estudiantes.create');
@@ -58,16 +65,18 @@ Route::group(['middleware' => ['auth','verified']], function () {
         return view('estudiantes.delete');
     })->name('estudiantes.delete');
 
-
     //Docentes
     Route::get('/docentes', function () {
         return view('docentes');
     })->name('docentes');
 
+    Route::get('/docentes/details/{id}', function () {
+        return view('docentes.show');
+    })->name('docentes.show');
+
     Route::get('/docentes/create', function () {
         return view('docentes.create');
     })->name('docentes.create');
-
 
     Route::get('/docentes/edit/{id}', function () {
         return view('docentes.edit');
@@ -82,10 +91,13 @@ Route::group(['middleware' => ['auth','verified']], function () {
         return view('atenciones');
     })->name('atenciones');
 
+    Route::get('/atenciones/details/{id}', function () {
+        return view('atenciones.show');
+    })->name('atenciones.show');
+
     Route::get('/atenciones/create', function () {
         return view('atenciones.create');
     })->name('atenciones.create');
-
 
     Route::get('/atenciones/edit/{id}', function () {
         return view('atenciones.edit');
@@ -95,9 +107,6 @@ Route::group(['middleware' => ['auth','verified']], function () {
         return view('atenciones.delete');
     })->name('atenciones.delete');
 });
-
-
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

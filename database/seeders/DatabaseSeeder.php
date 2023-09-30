@@ -12,11 +12,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        \App\Models\User::factory()->create([
+            'name' => 'Administrador UML',
+            'email' => 'bibliotecaocotal@uml.edu.ni',
+        ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        //Create 2500 books
+        \App\Models\Libro::factory(2500)->create();
+        //Create 10 students
+
+        \App\Models\Estudiante::factory(500)->create();
+        //Create 10 teachers
+        \App\Models\Docente::factory(500)->create();
+
+        //Create 250 atenciones
+        \App\Models\Atencion::factory(250)->create();
     }
 }
